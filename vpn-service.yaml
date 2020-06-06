@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Service
+metadata:
+  name: vpn-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: ovpn0
+  ports:
+    - port: 943
+      targetPort: 943
+    - port: 9443
+      targetPort: 9443
+    - port: 1194
+      targetPort: 1194

@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ovpn0
+  namespace: ovpn
+  labels:
+    app: ovpn0
+    track: stable
+spec:
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name: openvpn
+        app: ovpn0
+    spec:
+      containers:
+      - image: linuxserver/openvpn-as
+        name: ovpn
+        env:
+          - name: PUID
+            value: 1000
+          - name: PGID
+            value: 1000
+          - name: TZ
+            value: Europe/London
+        ports:
+        - containerPort: 943
+          name: por1
+        - containerPort: 9443
+          name: por2
+        - containerPort: 1194
+          name: openvpn
+          protocol: UDP
+        securityContext:
+          capabilities:
+            add:
+            - NET_ADMIN
