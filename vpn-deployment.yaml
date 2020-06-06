@@ -23,7 +23,7 @@ spec:
         - name: PGID
           value: 1000
         - name: TZ
-          value: Europe/London
+          value: "Europe/London"
         ports:
         - containerPort: 943
           name: por1
