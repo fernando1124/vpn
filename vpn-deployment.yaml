@@ -15,15 +15,15 @@ spec:
         app: ovpn0
     spec:
       containers:
-      - image: linuxserver/openvpn-as
-        name: ovpn
+      - name: ovpn
+        image: linuxserver/openvpn-as
         env:
-          - name: PUID
-            value: 1000
-          - name: PGID
-            value: 1000
-          - name: TZ
-            value: Europe/London
+        - name: PUID
+          value: 1000
+        - name: PGID
+          value: 1000
+        - name: TZ
+          value: Europe/London
         ports:
         - containerPort: 943
           name: por1
